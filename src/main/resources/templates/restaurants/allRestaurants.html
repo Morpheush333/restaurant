@@ -1,0 +1,68 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <style>
+        body {
+            margin: auto;
+            text-align: center;
+            width: 800px;
+            background-color: lightgray;
+            border: 1px solid lightblue;
+            padding: 10px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 10px;
+        }
+
+        .restaurant {
+            display: flex;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .restaurant img {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            flex: 1;
+        }
+
+        .restaurant-description {
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+            text-align: center;
+            flex: 3;
+        }
+
+        .restaurant-description a {
+            padding: 5px 30px;
+            text-align: center;
+            background-color: lightblue;
+            border-radius: 5px;
+            border: 1px solid blue;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="search">
+    Search bar
+</div>
+<div class="content">
+    <div th:each="restaurant : ${restaurants}" class="restaurant">
+        <img th:src="${restaurant.img}" src="https://placeit-assets.s3-accelerate.amazonaws.com/landing-pages/restaurant-logos-lp/Online-Restaurant-Logo-Maker-for-a-Noodle-Bar.png" alt="">
+        <div class="restaurant-description">
+            <h4 th:text="${restaurant.name}">Mexicans</h4>
+            <a th:href="'/restaurant/' + ${restaurant.id}" href="#">GO!</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
